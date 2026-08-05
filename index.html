@@ -1,86 +1,199 @@
-<<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caminhos do Perdão | Blog</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; margin-bottom: 40px; padding: 40px 20px; background-color: #eef2f3; border-radius: 10px; }
-        .posts { display: flex; flex-direction: column; gap: 30px; }
-        .post-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .post-image { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
-        .date { font-size: 0.9em; color: #777; display: block; margin-bottom: 15px; }
-        .button-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-        .btn { display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .btn:hover { background-color: #45a049; }
-        .btn-pesquisa { background-color: #2196F3; }
-        .btn-pesquisa:hover { background-color: #1976D2; }
-        footer { text-align: center; margin-top: 50px; padding: 20px; font-size: 0.9em; color: #666; }
-    </style>
-</head>
-<body>
+/* ============================================================
+   ESTILO GERAL & TEMA URBANO-ARTÍSTICO
+   ============================================================ */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #f0f0f0; /* Texto claro em fundo escuro para vibe de rua à noite */
+    margin: 0;
+    padding: 0;
+    /* Fundo: Textura de muro de concreto escuro com um grafite abstrato sutil */
+    background-color: #2a2a2a;
+    background-image: 
+        url('https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=50'), /* Muro de concreto sutil */
+        linear-gradient(rgba(42, 42, 42, 0.85), rgba(42, 42, 42, 0.95)); /* Camada escura por cima */
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+}
 
-    <header>
-        <div class="container">
-            <h1>Caminhos do Perdão</h1>
-            <p>Reflexões sobre a arte de soltar o peso e seguir em frente.</p>
-        </div>
-    </header>
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-    <main class="container">
-        <section class="posts">
-            
-            <article class="post-card">
-                <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=800&q=80" alt="Caminho tranquilo na natureza" class="post-image">
-                
-                <h2>Por que perdoar não significa esquecer?</h2>
-                <span class="date">Publicado em 20 de Maio</span>
-                <p>Muitas vezes achamos que perdoar é fingir que nada aconteceu. Na verdade, o perdão é sobre tirar a dor da lembrança e seguir em frente com paz mental...</p>
-                
-                <div class="button-group">
-                    <a href="#" class="btn">Ler artigo completo</a>
-                    <a href="https://www.scielo.br/" target="_blank" class="btn btn-pesquisa">Pesquisas no SciELO</a>
-                </div>
-            </article>
+/* ============================================================
+   HEADER: O "TAGGING" DO BLOG
+   ============================================================ */
+header {
+    text-align: center;
+    padding: 60px 20px;
+    margin-bottom: 40px;
+    /* Linha de spray no fundo */
+    background: radial-gradient(circle, rgba(255, 64, 129, 0.2) 0%, rgba(42, 42, 42, 0) 70%);
+}
 
-            <article class="post-card">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80" alt="Pessoa meditando na natureza" class="post-image">
-                
-                <h2>O impacto do perdão na sua saúde mental</h2>
-                <span class="date">Publicado em 15 de Maio</span>
-                <p>Guardar ressentimento é como carregar uma mochila cheia de pedras todos os dias. Descubra como o perdão ajuda a aliviar o estresse e traz leveza...</p>
-                
-                <div class="button-group">
-                    <a href="#" class="btn">Ler artigo completo</a>
-                    <a href="https://scholar.google.com.br/scholar?q=perd%C3%A3o+e+sa%C3%BAde+mental" target="_blank" class="btn btn-pesquisa">Artigos no Google Acadêmico</a>
-                </div>
-            </article>
+header h1 {
+    /* Fonte estilo Graffiti - Usando uma alternativa web-safe robusta */
+    font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
+    font-size: 4.5em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 5px;
+    letter-spacing: -2px;
+    /* Efeito de sobreposição e contorno de spray */
+    text-shadow: 
+        2px 2px 0px #FF4081,  /* Rosa vibrante urbano */
+        -2px -2px 0px #00BCD4, /* Ciano vibrante urbano */
+        0 0 15px rgba(255,255,255,0.5);
+    transform: rotate(-2deg); /* Uma leve inclinação artística */
+}
 
-            <article class="post-card">
-                <img src="https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?auto=format&fit=crop&w=800&q=80" alt="Pessoa refletindo olhando para a montanha" class="post-image">
-                
-                <h2>Perdoar a si mesmo: O primeiro passo</h2>
-                <span class="date">Publicado em 10 de Maio</span>
-                <p>Muitas vezes o julgador mais severo que enfrentamos é o espelho. Entenda a importância do autoperdão no processo de cura pessoal...</p>
-                
-                <div class="button-group">
-                    <a href="#" class="btn">Ler artigo completo</a>
-                    <a href="https://site.cfp.org.br/" target="_blank" class="btn btn-pesquisa">Conselho de Psicologia</a>
-                </div>
-            </article>
+header p {
+    font-size: 1.3em;
+    color: #ddd;
+    font-weight: 300;
+    margin-top: 0;
+    font-style: italic;
+}
 
-        </section>
-    </main>
+/* ============================================================
+   POSTS: MURAIS INDIVIDUAIS
+   ============================================================ */
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Caminhos do Perdão. Criado com o propósito de espalhar empatia.</p>
-        </div>
-    </footer>
+.post-card {
+    /* Fundo escuro com uma textura leve de tinta respingada */
+    background-color: #333;
+    background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M10 10c0 10 20 10 20 0s-20-10-20 0z" fill="%23fff" fill-opacity="0.05"/%3E%3C/svg%3E');
+    padding: 30px;
+    border-radius: 4px; /* Cantos menos arredondados, mais brutos */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.5); /* Sombra em bloco, estilo arte gráfica */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
 
-</body>
-</html>
+.post-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.4);
+}
+
+/* Um elemento de graffiti abstrato "sprayado" no canto de cada card */
+.post-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #00BCD4 0%, rgba(0,188,212,0) 70%);
+    opacity: 0.3;
+    border-radius: 50%;
+}
+
+.post-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    /* Borda sutil de tinta */
+    border: 3px solid #444;
+}
+
+.post-card h2 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 0;
+    letter-spacing: -1px;
+    /* Linha colorida de spray embaixo do título */
+    background: linear-gradient(to right, #FF4081 0%, transparent 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 4px solid #FF4081;
+}
+
+.date {
+    display: block;
+    font-size: 0.9em;
+    color: #aaa;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.post-card p {
+    font-size: 1.1em;
+    color: #ccc;
+    margin-bottom: 25px;
+}
+
+/* ============================================================
+   BOTÕES: AÇÃO STENCIL
+   ============================================================ */
+.button-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: transparent; /* Fundo transparente */
+    color: #FF4081; /* Cor do spray */
+    text-decoration: none;
+    border: 2px solid #FF4081; /* Borda estilo stencil */
+    border-radius: 0px; /* Bruto, sem arredondamento */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Efeito de "preenchimento de spray" no hover */
+.btn:hover {
+    background-color: #FF4081;
+    color: #2a2a2a;
+    box-shadow: 0 0 15px rgba(255, 64, 129, 0.5);
+}
+
+.btn-pesquisa {
+    color: #00BCD4;
+    border-color: #00BCD4;
+}
+
+.btn-pesquisa:hover {
+    background-color: #00BCD4;
+    color: #2a2a2a;
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+}
+
+/* ============================================================
+   FOOTER: CRÉDITOS NA RUA
+   ============================================================ */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 30px;
+    border-top: 1px solid #444;
+    background-color: rgba(0,0,0,0.3);
+}
+
+footer p {
+    font-size: 0.9em;
+    color: #888;
+    font-weight: 300;
+}
