@@ -1,199 +1,193 @@
-/* ============================================================
-   ESTILO GERAL & TEMA URBANO-ARTÍSTICO
-   ============================================================ */
-body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #f0f0f0; /* Texto claro em fundo escuro para vibe de rua à noite */
-    margin: 0;
-    padding: 0;
-    /* Fundo: Textura de muro de concreto escuro com um grafite abstrato sutil */
-    background-color: #2a2a2a;
-    background-image: 
-        url('https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1920&q=50'), /* Muro de concreto sutil */
-        linear-gradient(rgba(42, 42, 42, 0.85), rgba(42, 42, 42, 0.95)); /* Camada escura por cima */
-    background-size: cover;
-    background-attachment: fixed;
-    background-blend-mode: overlay;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo do Graffiti - Arte Urbana</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+        }
 
-/* ============================================================
-   HEADER: O "TAGGING" DO BLOG
-   ============================================================ */
-header {
-    text-align: center;
-    padding: 60px 20px;
-    margin-bottom: 40px;
-    /* Linha de spray no fundo */
-    background: radial-gradient(circle, rgba(255, 64, 129, 0.2) 0%, rgba(42, 42, 42, 0) 70%);
-}
+        header {
+            background: linear-gradient(135deg, #ff007f, #7928ca);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
 
-header h1 {
-    /* Fonte estilo Graffiti - Usando uma alternativa web-safe robusta */
-    font-family: 'Arial Black', 'Helvetica Bold', sans-serif;
-    font-size: 4.5em;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 5px;
-    letter-spacing: -2px;
-    /* Efeito de sobreposição e contorno de spray */
-    text-shadow: 
-        2px 2px 0px #FF4081,  /* Rosa vibrante urbano */
-        -2px -2px 0px #00BCD4, /* Ciano vibrante urbano */
-        0 0 15px rgba(255,255,255,0.5);
-    transform: rotate(-2deg); /* Uma leve inclinação artística */
-}
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-header p {
-    font-size: 1.3em;
-    color: #ddd;
-    font-weight: 300;
-    margin-top: 0;
-    font-style: italic;
-}
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
 
-/* ============================================================
-   POSTS: MURAIS INDIVIDUAIS
-   ============================================================ */
-.posts {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
+        container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
-.post-card {
-    /* Fundo escuro com uma textura leve de tinta respingada */
-    background-color: #333;
-    background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M10 10c0 10 20 10 20 0s-20-10-20 0z" fill="%23fff" fill-opacity="0.05"/%3E%3C/svg%3E');
-    padding: 30px;
-    border-radius: 4px; /* Cantos menos arredondados, mais brutos */
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.5); /* Sombra em bloco, estilo arte gráfica */
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
+        /* Seção da Galeria */
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ff007f;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
 
-.post-card:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 15px 15px 0px rgba(0,0,0,0.4);
-}
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
 
-/* Um elemento de graffiti abstrato "sprayado" no canto de cada card */
-.post-card::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    background: radial-gradient(circle, #00BCD4 0%, rgba(0,188,212,0) 70%);
-    opacity: 0.3;
-    border-radius: 50%;
-}
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
 
-.post-image {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    /* Borda sutil de tinta */
-    border: 3px solid #444;
-}
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-.post-card h2 {
-    font-family: 'Arial Black', sans-serif;
-    font-size: 2.2em;
-    text-transform: uppercase;
-    color: #fff;
-    margin-top: 0;
-    letter-spacing: -1px;
-    /* Linha colorida de spray embaixo do título */
-    background: linear-gradient(to right, #FF4081 0%, transparent 80%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    padding-bottom: 5px;
-    border-bottom: 4px solid #FF4081;
-}
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
-.date {
-    display: block;
-    font-size: 0.9em;
-    color: #aaa;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+        .card-content {
+            padding: 1.2rem;
+        }
 
-.post-card p {
-    font-size: 1.1em;
-    color: #ccc;
-    margin-bottom: 25px;
-}
+        .card-content h3 {
+            margin-bottom: 0.5rem;
+            color: #ff007f;
+        }
 
-/* ============================================================
-   BOTÕES: AÇÃO STENCIL
-   ============================================================ */
-.button-group {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
+        .card-content p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
 
-.btn {
-    display: inline-block;
-    padding: 12px 28px;
-    background-color: transparent; /* Fundo transparente */
-    color: #FF4081; /* Cor do spray */
-    text-decoration: none;
-    border: 2px solid #FF4081; /* Borda estilo stencil */
-    border-radius: 0px; /* Bruto, sem arredondamento */
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9em;
-    transition: all 0.3s ease;
-    position: relative;
-}
+        /* Seção de Pesquisas e Links */
+        .search-links {
+            background-color: #1e1e1e;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
 
-/* Efeito de "preenchimento de spray" no hover */
-.btn:hover {
-    background-color: #FF4081;
-    color: #2a2a2a;
-    box-shadow: 0 0 15px rgba(255, 64, 129, 0.5);
-}
+        .buttons-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
 
-.btn-pesquisa {
-    color: #00BCD4;
-    border-color: #00BCD4;
-}
+        .btn {
+            background: linear-gradient(45deg, #7928ca, #ff007f);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
 
-.btn-pesquisa:hover {
-    background-color: #00BCD4;
-    color: #2a2a2a;
-    box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
-}
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
 
-/* ============================================================
-   FOOTER: CRÉDITOS NA RUA
-   ============================================================ */
-footer {
-    text-align: center;
-    margin-top: 60px;
-    padding: 30px;
-    border-top: 1px solid #444;
-    background-color: rgba(0,0,0,0.3);
-}
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            background-color: #0a0a0a;
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
 
-footer p {
-    font-size: 0.9em;
-    color: #888;
-    font-weight: 300;
-}
+    <header>
+        <h1>Cultura Graffiti</h1>
+        <p>A expressão visual da arte urbana e do hip-hop</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Estilos de Graffiti</h2>
+        <div class="gallery">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80" alt="Graffiti colorido estilo Wildstyle">
+                <div class="card-content">
+                    <h3>Wildstyle</h3>
+                    <p>Um dos estilos mais complexos, com letras entrelaçadas, setas e efeitos 3D de difícil leitura para leigos.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=600&q=80" alt="Graffiti estilo Throw-up">
+                <div class="card-content">
+                    <h3>Throw-up / Bubbly</h3>
+                    <p>Feito de forma rápida, geralmente com duas cores (contorno e preenchimento) e letras arredondadas.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80" alt="Mural em grafite">
+                <div class="card-content">
+                    <h3>Muralismo</h3>
+                    <p>Obras em grande escala que costumam cobrir paredes inteiras, combinando realismo, personagens e mensagens sociais.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="search-links">
+            <h2 class="section-title">Explore Mais Pesquisas</h2>
+            <p>Clique nos botões abaixo para pesquisar mais sobre tópicos e artistas do universo da arte urbana:</p>
+            
+            <div class="buttons-grid">
+                <a href="https://www.google.com/search?q=historia+do+graffiti+e+hip+hop" target="_blank" class="btn">História do Graffiti</a>
+                <a href="https://www.google.com/search?q=osgemeos+graffiti" target="_blank" class="btn">OSGEMEOS</a>
+                <a href="https://www.google.com/search?q=banksy+street+art" target="_blank" class="btn">Banksy & Street Art</a>
+                <a href="https://www.google.com/search?q=tecnicas+de+spray+para+graffiti" target="_blank" class="btn">Técnicas de Spray</a>
+                <a href="https://www.google.com/search?q=principais+estilos+de+graffiti" target="_blank" class="btn">Estilos de Letras</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 - Projeto do GitHub | Arte Urbana & Graffiti</p>
+    </footer>
+
+</body>
+</html>
