@@ -5,17 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo do Graffiti - Arte Urbana</title>
     <style>
-        /* Estilos Gerais */
+        /* Variáveis de Tema */
+        :root {
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --text-color: #ffffff;
+            --text-sub: #ccc;
+            --border-color: #333;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 12px 25px rgba(255, 0, 127, 0.3);
+        }
+
+        /* Tema Claro */
+        body.light-mode {
+            --bg-main: #f4f4f9;
+            --bg-card: #ffffff;
+            --text-color: #1a1a1a;
+            --text-sub: #555555;
+            --border-color: #e0e0e0;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 12px 25px rgba(121, 40, 202, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: var(--bg-main);
+            color: var(--text-color);
             line-height: 1.6;
         }
 
@@ -23,31 +45,52 @@
             background: linear-gradient(135deg, #ff007f, #7928ca);
             padding: 2rem;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            position: relative;
         }
 
         header h1 {
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: #fff;
         }
 
         header p {
             font-size: 1.1rem;
             opacity: 0.9;
+            color: #fff;
         }
 
-        container {
+        /* Botão para Alternar Tema */
+        .theme-toggle-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
             max-width: 1100px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
 
-        /* Seção da Galeria */
         .section-title {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            border-bottom: 2px solid #ff007f;
+            border-bottom: 3px solid #ff007f;
             display: inline-block;
             padding-bottom: 5px;
         }
@@ -59,16 +102,19 @@
             margin-bottom: 3rem;
         }
 
+        /* Sombras aplicadas nos cartões (Item 1) */
         .card {
-            background-color: #1e1e1e;
+            background-color: var(--bg-card);
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #333;
-            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .card img {
@@ -87,16 +133,26 @@
         }
 
         .card-content p {
-            color: #ccc;
+            color: var(--text-sub);
             font-size: 0.95rem;
         }
 
-        /* Seção de Pesquisas e Links */
+        .source-link {
+            display: inline-block;
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            color: #7928ca;
+            text-decoration: underline;
+        }
+
+        /* Caixa de Links com Sombra (Item 1) */
         .search-links {
-            background-color: #1e1e1e;
+            background-color: var(--bg-card);
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
         }
 
         .buttons-grid {
@@ -114,34 +170,45 @@
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .btn:hover {
             opacity: 0.9;
             transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 0, 127, 0.4);
         }
 
-        /* Rodapé */
         footer {
             text-align: center;
             padding: 1.5rem;
             margin-top: 3rem;
-            background-color: #0a0a0a;
-            color: #777;
+            background-color: var(--bg-card);
+            color: var(--text-sub);
             font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: #ff007f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <header>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">☀️ Modo Claro</button>
         <h1>Cultura Graffiti</h1>
         <p>A expressão visual da arte urbana e do hip-hop</p>
     </header>
 
-    <div class="container">
+    <main class="container">
         <h2 class="section-title">Estilos de Graffiti</h2>
         <div class="gallery">
             
@@ -150,6 +217,7 @@
                 <div class="card-content">
                     <h3>Wildstyle</h3>
                     <p>Um dos estilos mais complexos, com letras entrelaçadas, setas e efeitos 3D de difícil leitura para leigos.</p>
+                    <a href="https://unsplash.com/photos/1541701494587-cb58502866ab" target="_blank" rel="noopener noreferrer" class="source-link">Fonte da imagem ↗</a>
                 </div>
             </div>
 
@@ -158,6 +226,7 @@
                 <div class="card-content">
                     <h3>Throw-up / Bubbly</h3>
                     <p>Feito de forma rápida, geralmente com duas cores (contorno e preenchimento) e letras arredondadas.</p>
+                    <a href="https://unsplash.com/photos/1525909002-1b05e0c869d8" target="_blank" rel="noopener noreferrer" class="source-link">Fonte da imagem ↗</a>
                 </div>
             </div>
 
@@ -166,6 +235,7 @@
                 <div class="card-content">
                     <h3>Muralismo</h3>
                     <p>Obras em grande escala que costumam cobrir paredes inteiras, combinando realismo, personagens e mensagens sociais.</p>
+                    <a href="https://unsplash.com/photos/1509198397868-475647b2a1e5" target="_blank" rel="noopener noreferrer" class="source-link">Fonte da imagem ↗</a>
                 </div>
             </div>
 
@@ -176,18 +246,33 @@
             <p>Clique nos botões abaixo para pesquisar mais sobre tópicos e artistas do universo da arte urbana:</p>
             
             <div class="buttons-grid">
-                <a href="https://www.google.com/search?q=historia+do+graffiti+e+hip+hop" target="_blank" class="btn">História do Graffiti</a>
-                <a href="https://www.google.com/search?q=osgemeos+graffiti" target="_blank" class="btn">OSGEMEOS</a>
-                <a href="https://www.google.com/search?q=banksy+street+art" target="_blank" class="btn">Banksy & Street Art</a>
-                <a href="https://www.google.com/search?q=tecnicas+de+spray+para+graffiti" target="_blank" class="btn">Técnicas de Spray</a>
-                <a href="https://www.google.com/search?q=principais+estilos+de+graffiti" target="_blank" class="btn">Estilos de Letras</a>
+                <a href="https://www.google.com/search?q=historia+do+graffiti+e+hip+hop" target="_blank" rel="noopener noreferrer" class="btn">História do Graffiti</a>
+                <a href="https://www.google.com/search?q=osgemeos+graffiti" target="_blank" rel="noopener noreferrer" class="btn">OSGEMEOS</a>
+                <a href="https://www.google.com/search?q=banksy+street+art" target="_blank" rel="noopener noreferrer" class="btn">Banksy & Street Art</a>
+                <a href="https://www.google.com/search?q=tecnicas+de+spray+para+graffiti" target="_blank" rel="noopener noreferrer" class="btn">Técnicas de Spray</a>
+                <a href="https://www.google.com/search?q=principais+estilos+de+graffiti" target="_blank" rel="noopener noreferrer" class="btn">Estilos de Letras</a>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2026 -Projeto do GitHub | Arte Urbana & Graffiti</p>
+        <p>Desenvolvido por <strong>[Seu Nome Aqui]</strong></p>
+        <p>&copy; 2026 | Fonte dos dados: <a href="https://pt.wikipedia.org/wiki/Grafite_(arte)" target="_blank" rel="noopener noreferrer">Wikipédia - Grafite</a></p>
     </footer>
 
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeBtn');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                btn.textContent = '🌙 Modo Escuro';
+            } else {
+                btn.textContent = '☀️ Modo Claro';
+            }
+        }
+    </script>
 </body>
 </html>
