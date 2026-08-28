@@ -102,7 +102,6 @@
             margin-bottom: 3rem;
         }
 
-        /* Sombras aplicadas nos cartões (Item 1) */
         .card {
             background-color: var(--bg-card);
             border-radius: 10px;
@@ -110,6 +109,8 @@
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover {
@@ -125,6 +126,9 @@
 
         .card-content {
             padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card-content h3 {
@@ -132,20 +136,85 @@
             color: #ff007f;
         }
 
-        .card-content p {
+        /* Texto Interativo */
+        .interactive-text {
             color: var(--text-sub);
             font-size: 0.95rem;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            border-left: 2px solid transparent;
+            padding-left: 0;
+            transition: all 0.2s ease;
+        }
+
+        .interactive-text:hover {
+            border-left-color: #ff007f;
+            padding-left: 8px;
+        }
+
+        .extra-info {
+            display: none;
+            margin-top: 0.5rem;
+            color: #7928ca;
+            font-weight: 500;
+        }
+
+        .interactive-text.expanded .extra-info {
+            display: block;
+        }
+
+        .click-hint {
+            display: block;
+            font-size: 0.75rem;
+            color: #ff007f;
+            margin-top: 0.4rem;
+            font-weight: bold;
+        }
+
+        /* Rodapé do Card (Botão Like + Fonte) */
+        .card-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Botão de Gostei */
+        .like-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+        }
+
+        .like-btn:hover {
+            border-color: #ff007f;
+            transform: scale(1.05);
+        }
+
+        .like-btn.liked {
+            background-color: #ff007f;
+            color: #fff;
+            border-color: #ff007f;
         }
 
         .source-link {
-            display: inline-block;
-            margin-top: 0.8rem;
             font-size: 0.85rem;
             color: #7928ca;
             text-decoration: underline;
         }
 
-        /* Caixa de Links com Sombra (Item 1) */
         .search-links {
             background-color: var(--bg-card);
             padding: 2rem;
@@ -213,29 +282,56 @@
         <div class="gallery">
             
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80" alt="Graffiti colorido estilo Wildstyle">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="Graffiti colorido no muro">
                 <div class="card-content">
                     <h3>Wildstyle</h3>
-                    <p>Um dos estilos mais complexos, com letras entrelaçadas, setas e efeitos 3D de difícil leitura para leigos.</p>
-                    <a href="https://unsplash.com/photos/1541701494587-cb58502866ab" target="_blank" rel="noopener noreferrer" class="source-link">Fonte da imagem ↗</a>
+                    <div class="interactive-text" onclick="toggleText(this)">
+                        <p>Um dos estilos mais complexos, com letras entrelaçadas, setas e efeitos 3D de difícil leitura para leigos.</p>
+                        <span class="extra-info">💡 Curiosidade: Surgiu na Nova York dos anos 70 e exige domínio avançado da lata de spray.</span>
+                        <span class="click-hint">👉 Clique no texto para ver mais</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">12</span>
+                        </button>
+                        <a href="https://unsplash.com/photos/1579783902614-a3fb3927b675" target="_blank" rel="noopener noreferrer" class="source-link">Fonte ↗</a>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=600&q=80" alt="Graffiti estilo Throw-up">
+                <img src="https://images.unsplash.com/photo-1517697471339-4aa32003c11a?auto=format&fit=crop&w=600&q=80" alt="Graffiti urbano colorido">
                 <div class="card-content">
                     <h3>Throw-up / Bubbly</h3>
-                    <p>Feito de forma rápida, geralmente com duas cores (contorno e preenchimento) e letras arredondadas.</p>
-                    <a href="https://unsplash.com/photos/1525909002-1b05e0c869d8" target="_blank" rel="noopener noreferrer" class="source-link">Fonte da imagem ↗</a>
+                    <div class="interactive-text" onclick="toggleText(this)">
+                        <p>Feito de forma rápida, geralmente com duas cores (contorno e preenchimento) e letras arredondadas.</p>
+                        <span class="extra-info">💡 Curiosidade: Projetado para execução rápida nas ruas, priorizando agilidade na pintura.</span>
+                        <span class="click-hint">👉 Clique no texto para ver mais</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">8</span>
+                        </button>
+                        <a href="https://unsplash.com/photos/517697471339" target="_blank" rel="noopener noreferrer" class="source-link">Fonte ↗</a>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80" alt="Mural em grafite">
+                <img src="https://images.unsplash.com/photo-1561055657-b9e0bf0fa360?auto=format&fit=crop&w=600&q=80" alt="Muralismo e arte urbana">
                 <div class="card-content">
                     <h3>Muralismo</h3>
-                    <p>Obras em grande escala que costumam cobrir paredes inteiras, combinando realismo, personagens e mensagens sociais.</p>
-                    <a href="https://unsplash.com/photos/1509198397868-475647b2a1e5" target="_blank" rel="noopener noreferrer" class="source-link">Fonte da imagem ↗</a>
+                    <div class="interactive-text" onclick="toggleText(this)">
+                        <p>Obras em grande escala que costumam cobrir paredes inteiras, combinando realismo, personagens e mensagens sociais.</p>
+                        <span class="extra-info">💡 Curiosidade: Geralmente autorizado ou encomendado, transformando fachadas urbanas em galerias a céu aberto.</span>
+                        <span class="click-hint">👉 Clique no texto para ver mais</span>
+                    </div>
+                    <div class="card-footer">
+                        <button class="like-btn" onclick="toggleLike(this)">
+                            ❤️ <span class="like-count">25</span>
+                        </button>
+                        <a href="https://unsplash.com/photos/561055657" target="_blank" rel="noopener noreferrer" class="source-link">Fonte ↗</a>
+                    </div>
                 </div>
             </div>
 
@@ -261,6 +357,7 @@
     </footer>
 
     <script>
+        /* Alternar Tema */
         function toggleTheme() {
             const body = document.body;
             const btn = document.getElementById('themeBtn');
@@ -271,6 +368,32 @@
                 btn.textContent = '🌙 Modo Escuro';
             } else {
                 btn.textContent = '☀️ Modo Claro';
+            }
+        }
+
+        /* Lógica do Botão Gostei */
+        function toggleLike(button) {
+            const countSpan = button.querySelector('.like-count');
+            let count = parseInt(countSpan.textContent);
+
+            button.classList.toggle('liked');
+
+            if (button.classList.contains('liked')) {
+                countSpan.textContent = count + 1;
+            } else {
+                countSpan.textContent = count - 1;
+            }
+        }
+
+        /* Texto Interativo (Expansível) */
+        function toggleText(container) {
+            container.classList.toggle('expanded');
+            const hint = container.querySelector('.click-hint');
+
+            if (container.classList.contains('expanded')) {
+                hint.textContent = '👈 Clique para recolher';
+            } else {
+                hint.textContent = '👉 Clique no texto para ver mais';
             }
         }
     </script>
